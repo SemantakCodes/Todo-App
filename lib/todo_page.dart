@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/note_Pages.dart';
+import 'package:todo_app/note_pages.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -21,7 +21,7 @@ class _TodoPageState extends State<TodoPage> {
         centerTitle: true,
         ),
 
-      body: Notepages(),
+      body: Notepages(taskCompleted: false, onChanged: (p0) => print("Pressed!"), taskName: "Works",),
     );
   }
 }

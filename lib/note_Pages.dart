@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
 
 class Notepages extends StatelessWidget {
-  const Notepages({super.key});
+  final String taskName;
+  final bool taskCompleted;
+  Function(bool?)? onChanged;
+  
+  Notepages({super.key, 
+    required this.taskCompleted,
+    required this.taskName, 
+    required this.onChanged});
+
+  
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.20),
       child: Container(
+        decoration: BoxDecoration(
+          color: Colors.yellow,
+        ),
         width: 350,
         height: 75,
-        color: Colors.yellow,
         padding: EdgeInsets.all(25),
-        child: Text("Work", style: TextStyle(color: Colors.black, fontSize: 20),),
+        child: Row(
+          children: [
+          Text(
+            taskName, 
+            style: TextStyle(
+            fontSize: 20),
+          ),
+          Checkbox(value: taskCompleted, onChanged: onChanged)
+          ],
+        )
+          
       ),
     );
   }
