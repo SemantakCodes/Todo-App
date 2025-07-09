@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class Notepages extends StatelessWidget {
@@ -10,7 +12,6 @@ class Notepages extends StatelessWidget {
     required this.taskName, 
     required this.onChanged});
 
-  
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,13 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
+  
+  //variable
+  List ToDoTile = [
+    "Drink Milk","Drink MILF", "Beat your WILLY"
+  ];
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold
@@ -21,7 +28,12 @@ class _TodoPageState extends State<TodoPage> {
         centerTitle: true,
         ),
 
-      body: Notepages(taskCompleted: false, onChanged: (p0) => print("Pressed!"), taskName: "Works",),
+      body: 
+      ListView.builder(
+        itemCount: ToDoTile.length,
+        
+      ),
+      
     );
   }
 }
