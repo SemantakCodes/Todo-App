@@ -5,12 +5,15 @@ class Notepages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 50,
-      color: Colors.yellow,
-      padding: EdgeInsets.all(50),
-      child: Text("Work", style: TextStyle(color: Colors.black),),
+    return Padding(
+      padding: const EdgeInsets.all(20.20),
+      child: Container(
+        width: 350,
+        height: 75,
+        color: Colors.yellow,
+        padding: EdgeInsets.all(25),
+        child: Text("Work", style: TextStyle(color: Colors.black, fontSize: 20),),
+      ),
     );
   }
 }
