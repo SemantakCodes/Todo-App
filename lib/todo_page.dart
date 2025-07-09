@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/note_Pages.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
@@ -10,8 +11,17 @@ class TodoPage extends StatefulWidget {
 class _TodoPageState extends State<TodoPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    return Scaffold
+    (
+      backgroundColor: Colors.yellow[200],
+      appBar: AppBar(
+        backgroundColor: Colors.yellow,
+        elevation: 0,
+        title: Text("TO DO APP"),
+        centerTitle: true,
+        ),
+
+      body: Notepages(),
     );
   }
 }
