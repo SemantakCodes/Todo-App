@@ -29,9 +29,16 @@ class Notepages extends StatelessWidget {
           Text(
             taskName, 
             style: TextStyle(
-            fontSize: 20),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+            ),
           ),
-          Checkbox(value: taskCompleted, onChanged: onChanged)
+          Checkbox(
+            value: taskCompleted, 
+            onChanged: onChanged,
+            activeColor: Colors.black,
+          ),
           ],
         )
           
