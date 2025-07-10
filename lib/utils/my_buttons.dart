@@ -17,6 +17,7 @@ MyButtons({super.key, required this.text, required this.onPressed});
     return MaterialButton(
       onPressed: onPressed,
       color: Colors.yellow[400],
+      focusColor: Colors.yellow[200],
       child: Text(text),
     );
   }

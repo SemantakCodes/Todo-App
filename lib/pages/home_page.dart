@@ -42,7 +42,8 @@ class _TodoPageState extends State<TodoPage> {
   }
 
   //Create a new task
-  void createNewTask(){
+  void createNewTask()
+  {
     showDialog
     (
       context: context, 
@@ -56,6 +57,13 @@ class _TodoPageState extends State<TodoPage> {
         );
       }
     );
+  }
+
+  void deleteTask(int index)
+  {
+    setState(() {
+      ToDoList.removeAt(index);
+    });
   }
 
   @override
@@ -84,6 +92,7 @@ class _TodoPageState extends State<TodoPage> {
         {
           return Notepages
           (
+            deleteTiles: (context) => deleteTask(index),
             taskCompleted: ToDoList[index][1], 
             taskName: ToDoList[index][0], 
             onChanged: (value) => checkBoxChanged(value, index),
