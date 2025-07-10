@@ -15,7 +15,7 @@ class _TodoPageState extends State<TodoPage> {
   
   //variable
   List ToDoList = [
-    ["Drink Milk", false],["Drink MILF", false], ["Beat your WILLY", false]
+    
   ];
 
   //fetch data from text field
