@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:todo_app/note_pages.dart';
 
@@ -12,9 +14,15 @@ class _TodoPageState extends State<TodoPage> {
   
   //variable
   List ToDoTile = [
-    "Drink Milk","Drink MILF", "Beat your WILLY"
+    ["Drink Milk", false],["Drink MILF", false], ["Beat your WILLY", false]
   ];
-  
+  //methods
+  void checkBoxChanged(bool? value, int index){
+    setState(() {
+      ToDoTile[index][1] = !ToDoTile[index][1];
+    }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +39,14 @@ class _TodoPageState extends State<TodoPage> {
       body: 
       ListView.builder(
         itemCount: ToDoTile.length,
+        itemBuilder: (context, index){
+          return Notepages(
+          taskCompleted: ToDoTile[index][1], 
+          taskName: ToDoTile[index][0], 
+          onChanged: (value) => checkBoxChanged(value, index),
+          );
+        }
+        
         
       ),
       
