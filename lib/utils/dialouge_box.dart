@@ -3,10 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/utils/my_buttons.dart';
 
+// ignore: must_be_immutable
 class DialougeBox extends StatelessWidget {
 
   final TextEditingController controller;
-  const DialougeBox({super.key, required this.controller,});
+  VoidCallback onSave;
+  VoidCallback onCancel;
+
+  DialougeBox({super.key, required this.controller, required this.onSave, required this.onCancel});
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +42,10 @@ class DialougeBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //save button
-                MyButtons(text: "SAVE", onPressed: (){}),
+                MyButtons(text: "SAVE", onPressed: onSave),
                 const SizedBox(width: 25,),
                 //cancel button
-                MyButtons(text: "CANCEL", onPressed: (){}),
+                MyButtons(text: "CANCEL", onPressed: onCancel),
               ],
             )
           ],

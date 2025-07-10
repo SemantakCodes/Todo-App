@@ -14,19 +14,31 @@ class TodoPage extends StatefulWidget {
 class _TodoPageState extends State<TodoPage> {
   
   //variable
-  List ToDoTile = [
+  List ToDoList = [
     ["Drink Milk", false],["Drink MILF", false], ["Beat your WILLY", false]
   ];
 
   //fetch data from text field
-  final TextEditingController _textController = TextEditingController();
+  final _textController = TextEditingController();
 
   //methods
-  void checkBoxChanged(bool? value, int index){
-    setState(() {
-      ToDoTile[index][1] = !ToDoTile[index][1];
+  void checkBoxChanged(bool? value, int index)
+  {
+    setState(() 
+    {
+      ToDoList[index][1] = !ToDoList[index][1];
     }
     );
+  }
+
+  //Save New Task
+  void saveNewTask()
+  {
+    setState(() {
+      ToDoList.add([_textController.text, false]);
+      _textController.clear();
+    });
+    Navigator.of(context).pop();
   }
 
   //Create a new task
@@ -39,6 +51,8 @@ class _TodoPageState extends State<TodoPage> {
         return DialougeBox
         (
           controller: _textController,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
         );
       }
     );
@@ -64,14 +78,14 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: ListView.builder
       (
-        itemCount: ToDoTile.length,
+        itemCount: ToDoList.length,
 
         itemBuilder: (context, index)
         {
           return Notepages
           (
-            taskCompleted: ToDoTile[index][1], 
-            taskName: ToDoTile[index][0], 
+            taskCompleted: ToDoList[index][1], 
+            taskName: ToDoList[index][0], 
             onChanged: (value) => checkBoxChanged(value, index),
           );
         }
