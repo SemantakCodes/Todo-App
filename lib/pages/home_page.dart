@@ -17,6 +17,10 @@ class _TodoPageState extends State<TodoPage> {
   List ToDoTile = [
     ["Drink Milk", false],["Drink MILF", false], ["Beat your WILLY", false]
   ];
+
+  //fetch data from text field
+  final TextEditingController _textController = TextEditingController();
+
   //methods
   void checkBoxChanged(bool? value, int index){
     setState(() {
@@ -34,7 +38,7 @@ class _TodoPageState extends State<TodoPage> {
       {
         return DialougeBox
         (
-          
+          controller: _textController,
         );
       }
     );

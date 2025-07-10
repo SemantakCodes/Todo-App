@@ -1,8 +1,12 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:todo_app/utils/my_buttons.dart';
 
 class DialougeBox extends StatelessWidget {
-  const DialougeBox({super.key});
+
+  final TextEditingController controller;
+  const DialougeBox({super.key, required this.controller,});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +18,12 @@ class DialougeBox extends StatelessWidget {
         height: 120,
         child: Column
         (
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: 
           [
             TextField
             (
-              
+              controller: controller,
               decoration: InputDecoration
               (
                 border: OutlineInputBorder
@@ -30,9 +35,11 @@ class DialougeBox extends StatelessWidget {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //save button
                 MyButtons(text: "SAVE", onPressed: (){}),
+                const SizedBox(width: 25,),
                 //cancel button
                 MyButtons(text: "CANCEL", onPressed: (){}),
               ],

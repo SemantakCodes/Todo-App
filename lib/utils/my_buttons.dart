@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class MyButtons extends StatelessWidget {
@@ -14,7 +16,7 @@ MyButtons({super.key, required this.text, required this.onPressed});
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      color: Theme.of(context).primaryColor,
+      color: Colors.yellow[400],
       child: Text(text),
     );
   }
