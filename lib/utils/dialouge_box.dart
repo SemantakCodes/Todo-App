@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/utils/my_buttons.dart';
 
 class DialougeBox extends StatelessWidget {
   const DialougeBox({super.key});
@@ -31,8 +32,9 @@ class DialougeBox extends StatelessWidget {
             Row(
               children: [
                 //save button
-
+                MyButtons(text: "SAVE", onPressed: (){}),
                 //cancel button
+                MyButtons(text: "CANCEL", onPressed: (){}),
               ],
             )
           ],
