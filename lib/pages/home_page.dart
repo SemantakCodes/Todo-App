@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todo_app/database/todo_database.dart';
 import 'package:todo_app/utils/dialouge_box.dart';
 import 'package:todo_app/utils/todo_tiles.dart';
 
@@ -12,11 +14,22 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  
-  //variable
-  List ToDoList = [
-    
-  ];
+
+  //init the box
+  final _myBox = Hive.box('myBox');
+  TodoDatabase db = TodoDatabase();
+
+  @override
+  void initState() {
+    //creates default data on first time 
+    if(_myBox.get("ToDoList") == null){
+      db.createInitialData();
+    }
+    else{
+      db.LoadData();
+    }
+    super.initState();
+  }
 
   //fetch data from text field
   final _textController = TextEditingController();
@@ -26,19 +39,22 @@ class _TodoPageState extends State<TodoPage> {
   {
     setState(() 
     {
-      ToDoList[index][1] = !ToDoList[index][1];
+      db.ToDoList[index][1] = !db.ToDoList[index][1];
     }
     );
+    
+    db.UpdateData();
   }
 
   //Save New Task
   void saveNewTask()
   {
     setState(() {
-      ToDoList.add([_textController.text, false]);
+      db.ToDoList.add([_textController.text, false]);
       _textController.clear();
     });
     Navigator.of(context).pop();
+    db.UpdateData();
   }
 
   //Create a new task
@@ -57,13 +73,15 @@ class _TodoPageState extends State<TodoPage> {
         );
       }
     );
+    db.UpdateData();
   }
 
   void deleteTask(int index)
   {
     setState(() {
-      ToDoList.removeAt(index);
+      db.ToDoList.removeAt(index);
     });
+    db.UpdateData();
   }
 
   @override
@@ -86,15 +104,15 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: ListView.builder
       (
-        itemCount: ToDoList.length,
+        itemCount: db.ToDoList.length,
 
         itemBuilder: (context, index)
         {
           return Notepages
           (
             deleteTiles: (context) => deleteTask(index),
-            taskCompleted: ToDoList[index][1], 
-            taskName: ToDoList[index][0], 
+            taskCompleted: db.ToDoList[index][1], 
+            taskName: db.ToDoList[index][0], 
             onChanged: (value) => checkBoxChanged(value, index),
           );
         }
